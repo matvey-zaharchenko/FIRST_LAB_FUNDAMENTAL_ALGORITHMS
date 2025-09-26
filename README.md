@@ -1,1 +1,1 @@
-# FIRST_LAB_FUNDAMENTAL_ALGORITHMS
+# Lab work number one
