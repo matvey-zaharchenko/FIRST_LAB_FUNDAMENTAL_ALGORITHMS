@@ -22,7 +22,7 @@ int main(){
 
     printf("Input %d numbers: \n", T);
 
-    int numbers[T];
+    int* numbers = (int*)malloc(sizeof(int)*T);
     int res = 0;
     for(int i = 0; i < T; ++i){
         scanf("%d", &numbers[i]);
@@ -46,5 +46,6 @@ int main(){
         printf("Prime number on %d position: %d\n", numbers[i], primes[numbers[i]-1]);
     }
     free(primes);
+    free(numbers);
     return 0;
 }
