@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 enum Errors{
+    SUCCESS,
     INCORRECT_NUMBER_OF_ARGUMENTS,
     INCORRECT_FLAG,
     MALLOC_ERROR,
@@ -35,7 +36,7 @@ int main(int argc, char* argv[]){
         }
 
         int* array = (int*)malloc(100 * sizeof(int));
-        if(!array){
+        if(array != NULL){
             printf("Memory allocation error");
             return MALLOC_ERROR;
         }
@@ -103,7 +104,11 @@ int main(int argc, char* argv[]){
         if(number < 0){
             printf("Error: number must be positive\n");
             return NEGATIVE_NUMBER_ERROR;
-        }
+        } else if(number > 20){
+            printf("Error: number must be 0 to 20\n");
+            return WRONG_NUMBER;
+        } 
+
         printf("Factorial %d = %lld\n", number, func_f(number));
     } else{
         printf("Flag must be: -flag or /flag\n");
@@ -111,5 +116,5 @@ int main(int argc, char* argv[]){
         return INCORRECT_FLAG;
     }
 
-    return 0;
+    return SUCCESS;
 }

@@ -1,10 +1,10 @@
 #include "funcs.h"
 
-bool validNumber(char* number){
+bool validNumber(char* number){ //почитать strto... лучше чем atoi и тд 
     if(*number == '-'){
         ++number;
     }
-    while(number){
+    while(number){ 
         if(*number == '\0'){
             break;
         }
