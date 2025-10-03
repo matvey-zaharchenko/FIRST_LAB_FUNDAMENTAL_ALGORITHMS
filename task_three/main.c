@@ -6,12 +6,13 @@ int main(int argc, char* argv[]) {
         printf("Valid flags: q m t\n");
         return INCORRECT_FLAG;
     }
+    int flag = flagParsing(argv[1]);
 
-    if (strcmp(argv[1], "-q") == 0 || strcmp(argv[1], "/q") == 0) {
+    if (flag == 1) {
         return QuadraticFlag(argc, argv);
-    } else if (strcmp(argv[1], "-m") == 0 || strcmp(argv[1], "/m") == 0) {
+    } else if (flag == 2) {
         return MultipleFlag(argc, argv);
-    } else if (strcmp(argv[1], "-t") == 0 || strcmp(argv[1], "/t") == 0) {
+    } else if (flag == 3) {
         return TriangleFlag(argc, argv);
     } else {
         printf("Error. Flag must be: -flag or /flag\n");

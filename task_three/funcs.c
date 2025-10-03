@@ -202,45 +202,31 @@ int strToInt(char* number){
 int solutionsOfEquation(float a, float b, float c, float eps, float* result){
     result[0] = 0;
     result[1] = 0;
-    if(!(fabs(a) < eps) && !(fabs(b) < eps) && !(fabs(c) < eps)){
-        float D = powf(b, 2) - 4 * a * c;
-        if(D < 0){
-            return 0; // no one
-        }
-
-        if(fabs(D) < eps){
-            result[0] = (-b / (2 * a));
+    if(fabs(a) < eps){
+        if(fabs(b) < eps){
+            if(fabs(c) < eps){
+                return -1;
+            }
+            else{
+                return 0;
+            }
+        } else{
+            result[0] = -c / b;
             return 1;
         }
+    }
 
+    float D = powf(b, 2) - 4 * a * c;
+
+    if(D > 0){
         result[0] = ((-b - sqrt(D)) / (2*a));
         result[1] = ((-b + sqrt(D)) / (2*a));
         return 2;
-    } else if(!(fabs(a) < eps) && !(fabs(b) < eps) && (fabs(c) < eps)){
-        result[0] = 0;
-        result[1] = (-b / a);
-        return 2;
-    } else if(!(fabs(a) < eps) && (fabs(b) < eps) && !(fabs(c) < eps)){
-        float res = -c / a;
-        if(res < 0){
-            return 0; // no one
-        }
-        result[0] = -sqrt(res);
-        result[1] = sqrt(res);
-        return 2;
-    } else if(!(fabs(a) < eps) && (fabs(b) < eps) && (fabs(c) < eps)){
-        result[0] = 0;
-        return 1; 
-    } else if((fabs(a) < eps) && !(fabs(b) < eps) && !(fabs(c) < eps)){
-        result[0] = (-c / b);
+    } else if(fabs(D) < eps){
+        result[0] = -b / (2 * a);
         return 1;
-    } else if((fabs(a) < eps) && !(fabs(b) < eps) && (fabs(c) < eps)){
-        result[0] = 0;
-        return 1; 
-    } else if((fabs(a) < eps) && (fabs(b) < eps) && !(fabs(c) < eps)){
-        return 0; // no one
-    } else if((fabs(a) < eps) && (fabs(b) < eps) && (fabs(c) < eps)){
-        return -1; // inf
+    } else if(D < 0){
+        return 0;
     }
 }
 

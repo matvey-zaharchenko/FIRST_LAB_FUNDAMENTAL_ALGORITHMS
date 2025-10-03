@@ -20,7 +20,6 @@ int QuadraticFlag(int argc, char* argv[]);
 int MultipleFlag(int argc, char* argv[]);
 int TriangleFlag(int argc, char* argv[]);
 int flagParsing(char* flag);
-int flagParsing(char* flag);
 bool validIntNumber(char* number);
 bool validFloatNumber(char* number);
 float strToFloat(char* number);
