@@ -115,9 +115,6 @@ bool validFloatNumber(char* number){
         ++number;
     }
     while(*number != '\0'){
-        if(*number == '\0'){
-            break;
-        }
         if('0' > *number || *number > '9'){
             if(*number == '.'){
                 ++dotCount;
